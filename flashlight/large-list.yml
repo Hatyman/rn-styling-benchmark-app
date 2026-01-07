@@ -1,0 +1,8 @@
+appId: com.stylingbenchmarkapp
+---
+- launchApp
+- assertVisible: Large .*
+- swipe:
+    start: 50%, 90%
+    end: 50%, 10%
+    duration: 200
