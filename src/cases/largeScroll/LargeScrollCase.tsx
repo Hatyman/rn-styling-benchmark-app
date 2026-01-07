@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { FlatList, type ListRenderItemInfo } from 'react-native';
-import { arrayOf10000Items } from '@/consts.ts';
+import { arrayOf1000Items } from '@/consts.ts';
 import { LargeListItem } from '@/components/LargeListItem.tsx';
 
 function keyExtractor(_item: number, index: number) {
@@ -14,5 +14,5 @@ function renderItem({ index }: ListRenderItemInfo<number>) {
 }
 
 export const LargeScrollCase: FC = function LargeScrollCase() {
-  return <FlatList data={arrayOf10000Items} renderItem={renderItem} keyExtractor={keyExtractor} />;
+  return <FlatList data={arrayOf1000Items} renderItem={renderItem} keyExtractor={keyExtractor} />;
 };
