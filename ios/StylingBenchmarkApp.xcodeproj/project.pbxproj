@@ -282,7 +282,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.stylesheet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.debug;
 				PRODUCT_NAME = StylingBenchmarkApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
