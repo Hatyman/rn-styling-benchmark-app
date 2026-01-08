@@ -17,7 +17,7 @@ module.exports = function (api) {
       [
         'react-native-unistyles/plugin',
         {
-          debug: true,
+          debug: false,
           root: 'src',
         },
       ],
