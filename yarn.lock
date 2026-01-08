@@ -7473,7 +7473,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-edge-to-edge@npm:^1.7.0":
+"react-native-edge-to-edge@npm:1.7.0":
   version: 1.7.0
   resolution: "react-native-edge-to-edge@npm:1.7.0"
   peerDependencies:
@@ -7483,7 +7483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-nitro-modules@npm:^0.32.1":
+"react-native-nitro-modules@npm:0.32.1":
   version: 0.32.1
   resolution: "react-native-nitro-modules@npm:0.32.1"
   peerDependencies:
@@ -7493,7 +7493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^5.5.2":
+"react-native-safe-area-context@npm:5.6.2":
   version: 5.6.2
   resolution: "react-native-safe-area-context@npm:5.6.2"
   peerDependencies:
@@ -7503,7 +7503,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-unistyles@npm:^3.0.21":
+"react-native-unistyles@npm:3.0.21":
   version: 3.0.21
   resolution: "react-native-unistyles@npm:3.0.21"
   peerDependencies:
@@ -8410,10 +8410,10 @@ __metadata:
     prettier: "npm:2.8.8"
     react: "npm:19.2.0"
     react-native: "npm:0.83.1"
-    react-native-edge-to-edge: "npm:^1.7.0"
-    react-native-nitro-modules: "npm:^0.32.1"
-    react-native-safe-area-context: "npm:^5.5.2"
-    react-native-unistyles: "npm:^3.0.21"
+    react-native-edge-to-edge: "npm:1.7.0"
+    react-native-nitro-modules: "npm:0.32.1"
+    react-native-safe-area-context: "npm:5.6.2"
+    react-native-unistyles: "npm:3.0.21"
     react-test-renderer: "npm:19.2.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
