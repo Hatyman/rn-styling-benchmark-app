@@ -310,7 +310,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.stylesheet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.sc;
 				PRODUCT_NAME = StylingBenchmarkApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
