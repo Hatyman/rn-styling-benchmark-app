@@ -5,14 +5,13 @@
  * @format
  */
 
-import { StatusBar, StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RootScreen } from '@/RootScreen.tsx';
 
 function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={'dark-content'} />
       <AppContent />
     </SafeAreaProvider>
   );
@@ -20,9 +19,10 @@ function App() {
 
 function AppContent() {
   return (
-    <SafeAreaView style={ownStyles.container}>
+    <View style={ownStyles.container}>
+      <StatusBar barStyle={'dark-content'} />
       <RootScreen />
-    </SafeAreaView>
+    </View>
   );
 }
 
