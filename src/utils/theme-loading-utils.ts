@@ -1,4 +1,4 @@
-import _typographyTheme from '@jisr-hr/ds-foundation/mobile/abc/light/typography-ar.json';
+import _typographyTheme from '@jisr-hr/ds-foundation/mobile/abc/light/typography-en.json';
 import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
 
 const colorsSyncTokensRecord = {

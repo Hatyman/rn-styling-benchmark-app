@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { FlatList, type ListRenderItemInfo } from 'react-native';
 import { arrayOf1000Items } from '@/consts.ts';
 import { LargeListItem } from '@/components/LargeListItem.tsx';
+import { sharedStyles } from '@/styles/shared-styles.ts';
 
 function keyExtractor(_item: number, index: number) {
   return index.toString();
@@ -14,5 +15,14 @@ function renderItem({ index }: ListRenderItemInfo<number>) {
 }
 
 export const LargeScrollCase: FC = function LargeScrollCase() {
-  return <FlatList data={arrayOf1000Items} renderItem={renderItem} keyExtractor={keyExtractor} />;
+  return (
+    <FlatList
+      data={arrayOf1000Items}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      contentContainerStyle={contentContainerStyle}
+    />
+  );
 };
+
+const contentContainerStyle = [sharedStyles.gap16, sharedStyles.paddingHorizontal16];

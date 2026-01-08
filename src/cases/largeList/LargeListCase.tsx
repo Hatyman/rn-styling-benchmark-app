@@ -2,10 +2,11 @@ import { ScrollView } from 'react-native';
 import type { FC } from 'react';
 import { arrayOf1000Items } from '@/consts.ts';
 import { LargeListItem } from '@/components/LargeListItem.tsx';
+import { sharedStyles } from '@/styles/shared-styles.ts';
 
 export const LargeListCase: FC = function LargeListCase() {
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={contentContainerStyle}>
       {arrayOf1000Items.map((_, i) => (
         <LargeListItem
           key={i}
@@ -16,3 +17,5 @@ export const LargeListCase: FC = function LargeListCase() {
     </ScrollView>
   );
 };
+
+const contentContainerStyle = [sharedStyles.gap16, sharedStyles.paddingHorizontal16];
