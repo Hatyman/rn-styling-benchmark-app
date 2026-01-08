@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import { type StyleProp, View, type ViewStyle } from 'react-native';
 import { Typography } from '@/components/Typography.tsx';
 import { Button } from '@/components/Button.tsx';
-import { useThemeConfig } from '@/providers/ThemeProvider.tsx';
 import { sharedStyles } from '@/styles/shared-styles.ts';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 interface OwnProps {
   containerStyle?: StyleProp<ViewStyle>;
@@ -12,8 +12,6 @@ interface OwnProps {
 }
 
 export const LargeListItem: FC<OwnProps> = function LargeListItem(props) {
-  const { theme, changeTheme } = useThemeConfig();
-
   return (
     <View style={props.containerStyle}>
       <Typography variant={'HeadlineLarge'} colorVariant={'accent'}>
@@ -24,9 +22,9 @@ export const LargeListItem: FC<OwnProps> = function LargeListItem(props) {
       </Typography>
       <Button
         style={sharedStyles.mt16}
-        text={`Toggle theme (now ${theme})`}
+        text={`Toggle theme (now ${UnistylesRuntime.themeName})`}
         onPress={() => {
-          changeTheme(theme === 'dark' ? 'light' : 'dark');
+          UnistylesRuntime.setTheme(UnistylesRuntime.themeName === 'dark' ? 'light' : 'dark');
         }}
       />
     </View>

@@ -1,14 +1,14 @@
 import type { ComponentProps, FC } from 'react';
-import { type StyleProp, StyleSheet, Text, type TextStyle } from 'react-native';
-import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
-import type { TypographyTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/typography-en.d.ts';
-import { useUIKitTheme } from '@/utils/styling-utils.ts';
-import { useThemeTypography } from '@/providers/ThemeProvider.tsx';
+import { type StyleProp, Text, type TextStyle } from 'react-native';
+import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
+import type { AppThemes } from '@/utils/theme-init-utils.ts';
+
+type Variants = UnistylesVariants<typeof ownStyles>;
 
 interface OwnProps extends ComponentProps<typeof Text> {
   textAlign?: 'center' | 'left' | 'right';
-  colorVariant?: 'primary' | 'secondary' | 'alternative' | 'accent' | null;
-  variant?: keyof TypographyTheme['typography'] | null;
+  colorVariant?: Variants['color'] | null;
+  variant?: Variants['style'] | null;
 }
 
 export const Typography: FC<OwnProps> = function Typography({
@@ -17,21 +17,15 @@ export const Typography: FC<OwnProps> = function Typography({
   variant = 'BodyMedium',
   ...props
 }) {
-  const styles: StyleProp<TextStyle> = [];
+  ownStyles.useVariants({
+    color: colorVariant ?? undefined,
+    style: variant ?? undefined,
+  });
 
-  const typographyTokens = useThemeTypography();
-
-  const themedStyles = useUIKitTheme('Typography-color', getThemedStyles);
-  const variantStyles = useUIKitTheme('Typography-variant', getVariantStyles, typographyTokens);
+  const styles: StyleProp<TextStyle> = [ownStyles.themedStyle];
 
   if (textAlign) {
     styles.push(ownStyles[textAlign]);
-  }
-  if (colorVariant) {
-    styles.push(themedStyles[colorVariant]);
-  }
-  if (variant) {
-    styles.push(variantStyles[variant]);
   }
 
   if (props.style) {
@@ -41,42 +35,52 @@ export const Typography: FC<OwnProps> = function Typography({
   return <Text {...props} style={styles} />;
 };
 
-const ownStyles = StyleSheet.create({
-  center: {
-    textAlign: 'center',
-  },
-  left: {
-    textAlign: 'left',
-  },
-  right: {
-    textAlign: 'right',
-  },
+const ownStyles = StyleSheet.create(tokens => {
+  return {
+    themedStyle: {
+      variants: {
+        color: {
+          primary: {
+            color: tokens.isLight
+              ? tokens.base.colors.sys.text.primary
+              : tokens.base.colors.sys.text.onAccent,
+          },
+          secondary: {
+            color: tokens.base.colors.sys.text.secondary,
+          },
+          alternative: {
+            color: tokens.isLight
+              ? tokens.base.colors.sys.text.onAccent
+              : tokens.base.colors.sys.text.primary,
+          },
+          accent: {
+            color: tokens.isLight
+              ? tokens.base.colors.sys.text.state.success
+              : tokens.base.colors.sys.text.state.danger,
+          },
+        },
+        style: getVariantStyles(tokens),
+      },
+    },
+    center: {
+      textAlign: 'center',
+    },
+    left: {
+      textAlign: 'left',
+    },
+    right: {
+      textAlign: 'right',
+    },
+  };
 });
 
-function getThemedStyles(theme: 'light' | 'dark', tokens: MobileTheme) {
-  return StyleSheet.create({
-    primary: {
-      color: theme === 'light' ? tokens.colors.sys.text.primary : tokens.colors.sys.text.onAccent,
-    },
-    secondary: {
-      color: tokens.colors.sys.text.secondary,
-    },
-    alternative: {
-      color: theme === 'light' ? tokens.colors.sys.text.onAccent : tokens.colors.sys.text.primary,
-    },
-    accent: {
-      color:
-        theme === 'light'
-          ? tokens.colors.sys.text.state.success
-          : tokens.colors.sys.text.state.danger,
-    },
-  });
-}
-
-function getVariantStyles(_theme: 'light' | 'dark', tokens: TypographyTheme) {
+function getVariantStyles(tokens: AppThemes['light']) {
   const typography = tokens.typography;
 
-  const styles: Record<string, TextStyle> = {};
+  const styles = {} as Record<
+    keyof typeof typography,
+    Pick<TextStyle, 'fontFamily' | 'fontSize' | 'lineHeight'>
+  >;
   for (const key in typography) {
     const variant = key as keyof typeof typography;
     styles[variant] = {
@@ -86,5 +90,5 @@ function getVariantStyles(_theme: 'light' | 'dark', tokens: TypographyTheme) {
     };
   }
 
-  return StyleSheet.create(styles as Record<keyof typeof typography, TextStyle>);
+  return styles;
 }

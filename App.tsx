@@ -5,27 +5,30 @@
  * @format
  */
 
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RootScreen } from '@/RootScreen.tsx';
-import { ThemeProvider, useThemeConfig } from '@/providers/ThemeProvider.tsx';
+import { StyleSheet, withUnistyles } from 'react-native-unistyles';
+import { configureUnistyles } from '@/utils/theme-init-utils.ts';
+
+configureUnistyles();
 
 function App() {
   return (
     <SafeAreaProvider>
-      <ThemeProvider>
-        <AppContent />
-      </ThemeProvider>
+      <AppContent />
     </SafeAreaProvider>
   );
 }
 
-function AppContent() {
-  const { theme } = useThemeConfig();
+const UniStatusBar = withUnistyles(StatusBar, tokens => ({
+  barStyle: tokens.isLight ? ('dark-content' as const) : ('light-content' as const),
+}));
 
+function AppContent() {
   return (
     <View style={ownStyles.container}>
-      <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} />
+      <UniStatusBar />
       <RootScreen />
     </View>
   );

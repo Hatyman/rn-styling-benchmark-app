@@ -1,22 +1,23 @@
 import type { ComponentProps, FC } from 'react';
 import { Typography } from '@/components/Typography.tsx';
-import { Pressable, StyleSheet } from 'react-native';
-import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
-import { useUIKitTheme } from '@/utils/styling-utils.ts';
+import { Pressable, type PressableStateCallbackType } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface OwnProps extends ComponentProps<typeof Pressable> {
   text?: string;
 }
 
 export const Button: FC<OwnProps> = function Button({ text, style, ...props }) {
-  const themedStyles = useUIKitTheme('Button', getThemedStyles);
+  ownStyles.useVariants({
+    bgColor: 'primary',
+  });
 
   return (
     <Pressable
       {...props}
       style={e => [
         ownStyles.base,
-        e.pressed ? themedStyles.primaryPressed : themedStyles.primaryDefault,
+        ownStyles.themedStyle(e),
         style && typeof style === 'function' ? style(e) : style,
       ]}
     >
@@ -29,7 +30,7 @@ export const Button: FC<OwnProps> = function Button({ text, style, ...props }) {
   );
 };
 
-const ownStyles = StyleSheet.create({
+const ownStyles = StyleSheet.create(tokens => ({
   base: {
     flexDirection: 'row',
     minHeight: 48,
@@ -37,15 +38,17 @@ const ownStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
-
-function getThemedStyles(theme: 'light' | 'dark', tokens: MobileTheme) {
-  return StyleSheet.create({
-    primaryDefault: {
-      backgroundColor: theme === 'light' ? '#101014' : '#FFFFFF', // tokens.colors.sys.bg.primary,
+  themedStyle: (state: PressableStateCallbackType) => ({
+    variants: {
+      bgColor: {
+        primary: {
+          backgroundColor: state.pressed
+            ? tokens.base.colors.sys.bg.state.successHighEmphasize
+            : tokens.isLight
+            ? tokens.base.colors.comp.btn.primary.bg.default
+            : '#FFFFFF',
+        },
+      },
     },
-    primaryPressed: {
-      backgroundColor: tokens.colors.sys.bg.state.successHighEmphasize,
-    },
-  });
-}
+  }),
+}));

@@ -1,7 +1,8 @@
 import { type FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Button } from '@/components/Button.tsx';
 import { sharedStyles } from '@/styles/shared-styles.ts';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface OwnProps {
   onModeChange: (mode: 'list' | 'scroll') => void;

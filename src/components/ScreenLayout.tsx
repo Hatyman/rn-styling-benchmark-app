@@ -1,54 +1,57 @@
 import type { ComponentProps, FC } from 'react';
-import { type StyleProp, StyleSheet, View, type ViewStyle } from 'react-native';
-import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
-import { useUIKitTheme } from '@/utils/styling-utils.ts';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { type StyleProp, View, type ViewStyle } from 'react-native';
+import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
+
+type OwnVariants = UnistylesVariants<typeof ownStyles>;
 
 interface OwnProps extends ComponentProps<typeof View> {
-  bgVariant?: 'primary' | 'secondary' | 'alternative' | null;
+  bgVariant?: OwnVariants['bgColor'] | null;
 }
 
 export const ScreenLayout: FC<OwnProps> = function ScreenLayout({
   bgVariant = 'primary',
   ...props
 }) {
-  const themedStyles = useUIKitTheme(ScreenLayout.name, getThemedStyles);
+  ownStyles.useVariants({
+    bgColor: bgVariant ?? undefined,
+  });
 
-  const styles: StyleProp<ViewStyle> = [ownStyles.base];
-
-  if (bgVariant) {
-    styles.push(themedStyles[bgVariant]);
-  }
+  const styles: StyleProp<ViewStyle> = [ownStyles.base, ownStyles.themedStyle];
 
   if (props.style) {
     styles.push(props.style);
   }
 
   return (
-    <SafeAreaView {...props} style={styles}>
+    <View {...props} style={styles}>
       {props.children}
-    </SafeAreaView>
+    </View>
   );
 };
 
-const ownStyles = StyleSheet.create({
+const ownStyles = StyleSheet.create((tokens, rt) => ({
   base: {
     flex: 1,
+    paddingTop: rt.insets.top,
+    paddingBottom: rt.insets.bottom,
   },
-});
-
-function getThemedStyles(theme: 'light' | 'dark', tokens: MobileTheme) {
-  return StyleSheet.create({
-    primary: {
-      backgroundColor:
-        theme === 'light' ? tokens.colors.sys.bg.primary : tokens.colors.sys.bg.accent,
+  themedStyle: {
+    variants: {
+      bgColor: {
+        primary: {
+          backgroundColor: tokens.isLight
+            ? tokens.base.colors.sys.bg.primary
+            : tokens.base.colors.sys.bg.accent,
+        },
+        secondary: {
+          backgroundColor: tokens.base.colors.sys.bg.secondary,
+        },
+        alternative: {
+          backgroundColor: tokens.isLight
+            ? tokens.base.colors.sys.bg.accent
+            : tokens.base.colors.sys.bg.primary,
+        },
+      },
     },
-    secondary: {
-      backgroundColor: tokens.colors.sys.bg.secondary,
-    },
-    alternative: {
-      backgroundColor:
-        theme === 'light' ? tokens.colors.sys.bg.accent : tokens.colors.sys.bg.primary,
-    },
-  });
-}
+  },
+}));
