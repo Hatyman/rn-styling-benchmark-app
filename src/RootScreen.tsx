@@ -4,10 +4,15 @@ import { TabBar } from '@/components/TabBar.tsx';
 import { LargeScrollCase } from '@/cases/largeScroll/LargeScrollCase.tsx';
 import { ScreenLayout } from '@/components/ScreenLayout.tsx';
 
-// com.stylingbenchmarkapp
-// flashlight test --bundleId com.stylingbenchmarkapp --testCommand "adb shell input swipe 300 800 300 100 50" --duration 10000 --resultsFilePath flashlight/reports/nude.json --resultsTitle "Nude" --iterationCount 3
-// flashlight test --bundleId com.stylingbenchmarkapp --testCommand "npx @perf-profiler/maestro@latest test flashlight/large-list.yml" --duration 10000 --resultsFilePath flashlight/reports/nude.json --resultsTitle "Nude" --iterationCount 3
-// flashlight test --bundleId com.stylingbenchmarkapp --testCommand "maestro test flashlight/large-list.yml" --duration 60000 --resultsFilePath flashlight/reports/nude.json --resultsTitle "Nude" --iterationCount 3
+/**
+ * com.stylingbenchmarkapp
+ * .debug, .stylesheet, .unistyles, .sc
+ * flashlight test --bundleId com.stylingbenchmarkapp --testCommand "adb shell input swipe 300 800 300 100 50" --duration 10000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Nude" --iterationCount 3
+ * flashlight test --bundleId com.stylingbenchmarkapp --testCommand "npx @perf-profiler/maestro@latest test flashlight/large-list.yml" --duration 10000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Nude" --iterationCount 3
+ * flashlight test --bundleId com.stylingbenchmarkapp --testCommand "maestro test flashlight/large-list.yml" --duration 60000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Nude" --iterationCount 3
+ * flashlight test --bundleId com.stylingbenchmarkapp.stylesheet --testCommand "maestro test flashlight/startup.yml" --duration 10000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Stylesheet" --iterationCount 10
+ * npx react-native-bundle-visualizer --platform android --bundle-output .bundle/visualization/sc.bundle --format json --reset-cache
+ */
 
 export const RootScreen: FC = function RootScreen() {
   const [mode, setMode] = useState<'list' | 'scroll'>('list');

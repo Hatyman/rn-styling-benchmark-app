@@ -1,7 +1,8 @@
-appId: com.stylingbenchmarkapp
+appId: com.stylingbenchmarkapp.stylesheet
 ---
-- launchApp
-- assertVisible: Large .*
+- launchApp:
+    clearState: true
+- assertVisible: Item .*
 - swipe:
     start: 50%, 90%
     end: 50%, 10%
