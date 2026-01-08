@@ -2,6 +2,7 @@ import { createContext, type FC, type PropsWithChildren, useContext, useState } 
 import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
 import type { TypographyTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/typography-en.d.ts';
 import { syncLoadAndGetTheme, typographyTheme } from '@/utils/theme-loading-utils.ts';
+import { ThemeProvider as SCThemeProvider } from 'styled-components/native';
 
 interface ThemeControlContextType {
   theme: 'light' | 'dark';
@@ -28,11 +29,9 @@ export const ThemeProvider: FC<PropsWithChildren> = function ThemeProvider(props
         },
       }}
     >
-      <ThemeColorsContext.Provider value={colorTokens}>
-        <ThemeTypographyContext.Provider value={typographyTheme}>
-          {props.children}
-        </ThemeTypographyContext.Provider>
-      </ThemeColorsContext.Provider>
+      <SCThemeProvider theme={{ base: colorTokens, ...typographyTheme, theme }}>
+        {props.children}
+      </SCThemeProvider>
     </ThemeControlContext.Provider>
   );
 };

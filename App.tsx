@@ -5,10 +5,11 @@
  * @format
  */
 
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RootScreen } from '@/RootScreen.tsx';
 import { ThemeProvider, useThemeConfig } from '@/providers/ThemeProvider.tsx';
+import styled from 'styled-components/native';
 
 function App() {
   return (
@@ -20,21 +21,19 @@ function App() {
   );
 }
 
+const StyledView = styled.View`
+  flex: 1;
+`;
+
 function AppContent() {
   const { theme } = useThemeConfig();
 
   return (
-    <View style={ownStyles.container}>
+    <StyledView>
       <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} />
       <RootScreen />
-    </View>
+    </StyledView>
   );
 }
-
-const ownStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

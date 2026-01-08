@@ -1,42 +1,38 @@
 import { type FC } from 'react';
-import { StyleSheet, View } from 'react-native';
 import { Button } from '@/components/Button.tsx';
-import { sharedStyles } from '@/styles/shared-styles.ts';
+import styled from 'styled-components/native';
 
 interface OwnProps {
   onModeChange: (mode: 'list' | 'scroll') => void;
   mode: 'list' | 'scroll';
 }
 
+const StyledContainer = styled.View`
+  flex-direction: row;
+  gap: 12px;
+  padding: 16px 16px 0;
+`;
+
+const StyledButton = styled(Button)`
+  flex-basis: 10%;
+  flex-grow: 1;
+`;
+
 export const TabBar: FC<OwnProps> = function TabBar(props) {
   return (
-    <View style={[ownStyles.container, sharedStyles.paddingHorizontal16]}>
-      <Button
-        style={ownStyles.flexSameSize}
+    <StyledContainer>
+      <StyledButton
         text={'Large list'}
         onPress={() => {
           props.onModeChange('list');
         }}
       />
-      <Button
-        style={ownStyles.flexSameSize}
+      <StyledButton
         text={'Large scroll'}
         onPress={() => {
           props.onModeChange('scroll');
         }}
       />
-    </View>
+    </StyledContainer>
   );
 };
-
-const ownStyles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    gap: 12,
-    paddingTop: 16,
-  },
-  flexSameSize: {
-    flexBasis: '10%',
-    flexGrow: 1,
-  },
-});

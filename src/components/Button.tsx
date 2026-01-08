@@ -1,51 +1,53 @@
-import type { ComponentProps, FC } from 'react';
+import { type ComponentProps, type FC, useState } from 'react';
 import { Typography } from '@/components/Typography.tsx';
-import { Pressable, StyleSheet } from 'react-native';
-import type { MobileTheme } from '@jisr-hr/ds-foundation/mobile/jisr/light/base.d.ts';
-import { useUIKitTheme } from '@/utils/styling-utils.ts';
+import { Pressable } from 'react-native';
+import styled from 'styled-components/native';
 
 interface OwnProps extends ComponentProps<typeof Pressable> {
   text?: string;
 }
 
-export const Button: FC<OwnProps> = function Button({ text, style, ...props }) {
-  const themedStyles = useUIKitTheme('Button', getThemedStyles);
+const StyledPressable = styled.Pressable<{ $isPressed: boolean }>`
+  flex-direction: row;
+  min-height: 48px;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+
+  ${({ theme: tokens, $isPressed }) => {
+    let color: string;
+
+    if ($isPressed) {
+      color = tokens.base.colors.sys.bg.state.successHighEmphasize;
+    } else {
+      color = tokens.theme === 'light' ? '#101014' : '#FFFFFF';
+    }
+
+    return `background-color: ${color};`;
+  }}
+`;
+
+export const Button: FC<OwnProps> = function Button({ text, ...props }) {
+  const [isPressed, setIsPressed] = useState<boolean>(false);
 
   return (
-    <Pressable
+    <StyledPressable
       {...props}
-      style={e => [
-        ownStyles.base,
-        e.pressed ? themedStyles.primaryPressed : themedStyles.primaryDefault,
-        style && typeof style === 'function' ? style(e) : style,
-      ]}
+      $isPressed={isPressed}
+      onPressIn={e => {
+        props.onPressIn?.(e);
+        setIsPressed(true);
+      }}
+      onPressOut={e => {
+        props.onPressOut?.(e);
+        setIsPressed(false);
+      }}
     >
       {!!text && (
         <Typography textAlign={'center'} variant={'BodyMedium'} colorVariant={'alternative'}>
           {text}
         </Typography>
       )}
-    </Pressable>
+    </StyledPressable>
   );
 };
-
-const ownStyles = StyleSheet.create({
-  base: {
-    flexDirection: 'row',
-    minHeight: 48,
-    borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-function getThemedStyles(theme: 'light' | 'dark', tokens: MobileTheme) {
-  return StyleSheet.create({
-    primaryDefault: {
-      backgroundColor: theme === 'light' ? '#101014' : '#FFFFFF', // tokens.colors.sys.bg.primary,
-    },
-    primaryPressed: {
-      backgroundColor: tokens.colors.sys.bg.state.successHighEmphasize,
-    },
-  });
-}
