@@ -3,6 +3,8 @@ import { LargeListCase } from '@/cases/largeList/LargeListCase.tsx';
 import { TabBar } from '@/components/TabBar.tsx';
 import { LargeScrollCase } from '@/cases/largeScroll/LargeScrollCase.tsx';
 import { ScreenLayout } from '@/components/ScreenLayout.tsx';
+import { Button } from '@/components/Button.tsx';
+import { sharedStyles } from '@/styles/shared-styles.ts';
 
 /**
  * com.stylingbenchmarkapp
@@ -16,9 +18,11 @@ import { ScreenLayout } from '@/components/ScreenLayout.tsx';
 
 export const RootScreen: FC = function RootScreen() {
   const [mode, setMode] = useState<'list' | 'scroll'>('list');
+  const [, setState] = useState<object>({});
 
   return (
     <ScreenLayout>
+      <Button style={sharedStyles.mb16} text={'Simulate rerender'} onPress={() => setState({})} />
       {mode === 'list' ? <LargeListCase /> : <LargeScrollCase />}
       <TabBar mode={mode} onModeChange={setMode} />
     </ScreenLayout>
