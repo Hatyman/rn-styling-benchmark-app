@@ -1,4 +1,4 @@
-appId: com.stylingbenchmarkapp.stylesheet
+appId: com.stylingbenchmarkapp.sc
 ---
 - launchApp:
     clearState: true

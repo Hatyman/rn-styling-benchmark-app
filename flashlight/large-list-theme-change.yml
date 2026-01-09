@@ -1,0 +1,6 @@
+appId: com.stylingbenchmarkapp.stylesheet
+---
+- tapOn:
+    point: 540, 600
+- tapOn:
+    point: 540, 600

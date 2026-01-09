@@ -26,6 +26,7 @@ export const LargeListItem: FC<OwnProps> = function LargeListItem(props) {
         onPress={() => {
           UnistylesRuntime.setTheme(UnistylesRuntime.themeName === 'dark' ? 'light' : 'dark');
         }}
+        testID={'toggleTheme'}
       />
     </View>
   );
