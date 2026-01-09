@@ -3,6 +3,8 @@ import { LargeListCase } from '@/cases/largeList/LargeListCase.tsx';
 import { TabBar } from '@/components/TabBar.tsx';
 import { LargeScrollCase } from '@/cases/largeScroll/LargeScrollCase.tsx';
 import { ScreenLayout } from '@/components/ScreenLayout.tsx';
+import { Button } from '@/components/Button.tsx';
+import styled from 'styled-components/native';
 
 /**
  * com.stylingbenchmarkapp
@@ -14,11 +16,17 @@ import { ScreenLayout } from '@/components/ScreenLayout.tsx';
  * npx react-native-bundle-visualizer --platform android --bundle-output .bundle/visualization/sc.bundle --format json --reset-cache
  */
 
+const StyledButton = styled(Button)`
+  margin: 0 16px 16px;
+`;
+
 export const RootScreen: FC = function RootScreen() {
   const [mode, setMode] = useState<'list' | 'scroll'>('list');
+  const [, setState] = useState<object>({});
 
   return (
     <ScreenLayout>
+      <StyledButton text={'Simulate rerender'} onPress={() => setState({})} />
       {mode === 'list' ? <LargeListCase /> : <LargeScrollCase />}
       <TabBar mode={mode} onModeChange={setMode} />
     </ScreenLayout>

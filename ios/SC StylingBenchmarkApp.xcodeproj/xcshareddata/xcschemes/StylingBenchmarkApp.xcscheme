@@ -55,11 +55,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "Stylesheet StylingBenchmarkApp.app"
+            BlueprintName = "Stylesheet StylingBenchmarkApp"
+            ReferencedContainer = "container:Stylesheet StylingBenchmarkApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "StylingBenchmarkApp.app"
             BlueprintName = "SC StylingBenchmarkApp"
             ReferencedContainer = "container:StylingBenchmarkApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -72,9 +81,15 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/xcshareddata/xcschemes/StylingBenchmarkApp.xcscheme
             BuildableName = "StylingBenchmarkApp.app"
             BlueprintName = "SC StylingBenchmarkApp"
             ReferencedContainer = "container:StylingBenchmarkApp.xcodeproj">
+========
+            BuildableName = "Stylesheet StylingBenchmarkApp.app"
+            BlueprintName = "Stylesheet StylingBenchmarkApp"
+            ReferencedContainer = "container:Stylesheet StylingBenchmarkApp.xcodeproj">
+>>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/xcshareddata/xcschemes/StylingBenchmarkApp.xcscheme
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
