@@ -1,49 +1,97 @@
+import subprocess
+import time
+import sys
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
 
-# 1. Настройка опций
-options = UiAutomator2Options()
-options.platform_name = 'Android'
-options.automation_name = 'UiAutomator2'
+# --- НАСТРОЙКИ ---
+# Укажите здесь ваши реальные данные
+APP_PACKAGE = 'com.stylingbenchmarkapp.stylesheet'
+APP_ACTIVITY = '.MainActivity'
+DEVICE_ID = '2B101FDH200GDH'  # Из вашего лога
 
-# Имя устройства (для adb это может быть просто 'Android', либо реальный id из 'adb devices')
-options.device_name = '2B101FDH200GDH'
+def run_adb_command(command):
+    """Выполняет ADB команду и выводит результат, игнорируя ошибки, если пакета нет."""
+    full_command = f"adb -s {DEVICE_ID} {command}"
+    print(f"> {full_command}")
+    try:
+        # shell=True позволяет выполнять команды так же, как в терминале
+        subprocess.run(full_command, shell=True, check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception as e:
+        print(f"  Ошибка выполнения команды: {e}")
 
-# --- КЛЮЧЕВЫЕ НАСТРОЙКИ ДЛЯ УСТАНОВЛЕННОГО ПРИЛОЖЕНИЯ ---
-# Замените на реальный пакет вашего приложения (например, com.instagram.android)
-options.app_package = 'com.stylingbenchmarkapp.stylesheet'
-# Замените на Activity, которая запускает приложение (часто это .MainActivity)
-options.app_activity = '.MainActivity'
+def clean_android_artifacts():
+    """Удаляет служебные приложения Appium, которые могут вызывать конфликт."""
+    print("\n--- ЗАПУСК ОЧИСТКИ (CLEANUP) ---")
 
-# noReset=True означает: "Не удаляй приложение и не чисти его данные/кэш"
-options.no_reset = True
+    packages = [
+        "io.appium.uiautomator2.server",
+        "io.appium.uiautomator2.server.test",
+        "io.appium.settings"
+    ]
 
-# URL сервера Appium (обычно такой по умолчанию)
-appium_server_url = 'http://127.0.0.1:4723'
+    for package in packages:
+        print(f"Удаляем {package}...")
+        run_adb_command(f"uninstall {package}")
 
-try:
-    print("Подключаемся к телефону и запускаем приложение...")
-    driver = webdriver.Remote(appium_server_url, options=options)
+    # Дополнительно: убиваем процесс uiautomator на телефоне, если он завис
+    print("Принудительная остановка uiautomator процессов...")
+    run_adb_command("shell pkill -f uiautomator")
 
-    # Неявное ожидание 10 секунд
-    driver.implicitly_wait(3)
+    print("Очистка завершена. Ждем 3 секунды перед стартом теста...\n")
+    time.sleep(3)
 
-    # --- ПОИСК И КЛИК ---
-    # React Native testID мапится в Accessibility ID
-    test_id = "toggleTheme"
+def run_test():
+    # 1. Сначала чистим хвосты
+    clean_android_artifacts()
 
-    print(f"Ищем элемент с testID='{test_id}'...")
-    button = driver.find_element(AppiumBy.ACCESSIBILITY_ID, test_id)
-    button.click()
+    # 2. Настраиваем Capabilities
+    options = UiAutomator2Options()
+    options.platform_name = 'Android'
+    options.automation_name = 'UiAutomator2'
+    options.device_name = DEVICE_ID
+    options.app_package = APP_PACKAGE
+    options.app_activity = APP_ACTIVITY
+    options.no_reset = True
 
-    print("Клик прошел успешно!")
+    # --- ВАЖНО: Увеличенные таймауты для Android 16 ---
+    # Даем телефону больше времени на запуск драйвера
+    options.set_capability("appium:uiautomator2ServerLaunchTimeout", 60000) # 60 сек
+    options.set_capability("appium:uiautomator2ServerInstallTimeout", 60000) # 60 сек
+    options.set_capability("appium:adbExecTimeout", 60000) # 60 сек для команд ADB
 
-except Exception as e:
-    print(f"Произошла ошибка: {e}")
+    # --- ЭКСПЕРИМЕНТАЛЬНО (если все равно не работает) ---
+    # Иногда помогает отключить подавление ошибок доступности на новых Android
+    # options.set_capability("appium:disableSuppressAccessibilityService", True)
 
-finally:
-    # Завершаем сессию, но приложение останется открытым (если не добавить driver.close_app())
-    if 'driver' in locals():
-        driver.quit()
-        print("Сессия Appium закрыта.")
+    driver = None
+    try:
+        print("Подключаемся к серверу Appium...")
+        driver = webdriver.Remote('http://127.0.0.1:4723', options=options)
+        print("Сессия успешно создана!")
+
+        driver.implicitly_wait(10)
+
+        # Ваш тестовый сценарий
+        test_id = "test"
+        print(f"Ищем элемент testID='{test_id}'...")
+
+        try:
+            btn = driver.find_element(AppiumBy.ACCESSIBILITY_ID, test_id)
+            btn.click()
+            print("Успешный клик!")
+        except Exception as e:
+            print(f"Элемент не найден или ошибка клика: {e}")
+
+    except Exception as e:
+        print(f"\nКРИТИЧЕСКАЯ ОШИБКА ЗАПУСКА:\n{e}")
+        print("\nСовет: Если ошибка 'UiAutomation not connected' осталась, перезагрузите телефон вручную.")
+
+    finally:
+        if driver:
+            driver.quit()
+            print("Сессия закрыта.")
+
+if __name__ == '__main__':
+    run_test()
