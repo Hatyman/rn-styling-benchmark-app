@@ -22,7 +22,7 @@ export const Typography: FC<OwnProps> = function Typography({
     align: textAlign,
   });
 
-  return <Text {...props} style={StyleSheet.compose(ownStyles.themedStyle, props.style)} />;
+  return <Text {...props} style={[ownStyles.themedStyle, props.style]} />;
 };
 
 const ownStyles = StyleSheet.create(tokens => {
