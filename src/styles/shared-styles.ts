@@ -5,12 +5,15 @@ export const sharedStyles = StyleSheet.create({
     marginTop: 16,
   },
   mb16: {
-    marginTop: 16,
+    marginBottom: 16,
   },
   gap16: {
     gap: 16,
   },
   paddingHorizontal16: {
     paddingHorizontal: 16,
+  },
+  marginHorizontal16: {
+    marginHorizontal: 16,
   },
 });

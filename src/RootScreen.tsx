@@ -22,7 +22,11 @@ export const RootScreen: FC = function RootScreen() {
 
   return (
     <ScreenLayout>
-      <Button style={sharedStyles.mb16} text={'Simulate rerender'} onPress={() => setState({})} />
+      <Button
+        style={[sharedStyles.mb16, sharedStyles.marginHorizontal16]}
+        text={'Simulate rerender'}
+        onPress={() => setState({})}
+      />
       {mode === 'list' ? <LargeListCase /> : <LargeScrollCase />}
       <TabBar mode={mode} onModeChange={setMode} />
     </ScreenLayout>
