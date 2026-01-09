@@ -1,12 +1,12 @@
 import type { ComponentProps, FC } from 'react';
-import { type StyleProp, Text, type TextStyle } from 'react-native';
+import { Text, type TextStyle } from 'react-native';
 import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
 import type { AppThemes } from '@/utils/theme-init-utils.ts';
 
 type Variants = UnistylesVariants<typeof ownStyles>;
 
 interface OwnProps extends ComponentProps<typeof Text> {
-  textAlign?: 'center' | 'left' | 'right';
+  textAlign?: Variants['align'];
   colorVariant?: Variants['color'] | null;
   variant?: Variants['style'] | null;
 }
@@ -20,19 +20,10 @@ export const Typography: FC<OwnProps> = function Typography({
   ownStyles.useVariants({
     color: colorVariant ?? undefined,
     style: variant ?? undefined,
+    align: textAlign,
   });
 
-  const styles: StyleProp<TextStyle> = [ownStyles.themedStyle];
-
-  if (textAlign) {
-    styles.push(ownStyles[textAlign]);
-  }
-
-  if (props.style) {
-    styles.push(props.style);
-  }
-
-  return <Text {...props} style={styles} />;
+  return <Text {...props} style={StyleSheet.compose(ownStyles.themedStyle, props.style)} />;
 };
 
 const ownStyles = StyleSheet.create(tokens => {
@@ -60,16 +51,18 @@ const ownStyles = StyleSheet.create(tokens => {
           },
         },
         style: getVariantStyles(tokens),
+        align: {
+          center: {
+            textAlign: 'center',
+          },
+          left: {
+            textAlign: 'left',
+          },
+          right: {
+            textAlign: 'right',
+          },
+        },
       },
-    },
-    center: {
-      textAlign: 'center',
-    },
-    left: {
-      textAlign: 'left',
-    },
-    right: {
-      textAlign: 'right',
     },
   };
 });
