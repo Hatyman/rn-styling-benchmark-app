@@ -1,7 +1,6 @@
 import type { ComponentProps, FC } from 'react';
 import { Text, type TextStyle } from 'react-native';
 import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
-import type { AppThemes } from '@/utils/theme-init-utils.ts';
 
 type Variants = UnistylesVariants<typeof ownStyles>;
 
@@ -50,7 +49,73 @@ const ownStyles = StyleSheet.create(tokens => {
               : tokens.base.colors.sys.text.state.danger,
           },
         },
-        style: getVariantStyles(tokens),
+        style: {
+          DisplayMedium: {
+            fontFamily: tokens.typography.DisplayMedium.fontFamily,
+            fontSize: tokens.typography.DisplayMedium.fontSize,
+            lineHeight: tokens.typography.DisplayMedium.lineHeight,
+          },
+          HeadlineLarge: {
+            fontFamily: tokens.typography.HeadlineLarge.fontFamily,
+            fontSize: tokens.typography.HeadlineLarge.fontSize,
+            lineHeight: tokens.typography.HeadlineLarge.lineHeight,
+          },
+          HeadlineMedium: {
+            fontFamily: tokens.typography.HeadlineMedium.fontFamily,
+            fontSize: tokens.typography.HeadlineMedium.fontSize,
+            lineHeight: tokens.typography.HeadlineMedium.lineHeight,
+          },
+          HeadlineSmall: {
+            fontFamily: tokens.typography.HeadlineSmall.fontFamily,
+            fontSize: tokens.typography.HeadlineSmall.fontSize,
+            lineHeight: tokens.typography.HeadlineSmall.lineHeight,
+          },
+          TitleLarge: {
+            fontFamily: tokens.typography.TitleLarge.fontFamily,
+            fontSize: tokens.typography.TitleLarge.fontSize,
+            lineHeight: tokens.typography.TitleLarge.lineHeight,
+          },
+          TitleMedium: {
+            fontFamily: tokens.typography.TitleMedium.fontFamily,
+            fontSize: tokens.typography.TitleMedium.fontSize,
+            lineHeight: tokens.typography.TitleMedium.lineHeight,
+          },
+          TitleSmall: {
+            fontFamily: tokens.typography.TitleSmall.fontFamily,
+            fontSize: tokens.typography.TitleSmall.fontSize,
+            lineHeight: tokens.typography.TitleSmall.lineHeight,
+          },
+          BodyLarge: {
+            fontFamily: tokens.typography.BodyLarge.fontFamily,
+            fontSize: tokens.typography.BodyLarge.fontSize,
+            lineHeight: tokens.typography.BodyLarge.lineHeight,
+          },
+          BodyMedium: {
+            fontFamily: tokens.typography.BodyMedium.fontFamily,
+            fontSize: tokens.typography.BodyMedium.fontSize,
+            lineHeight: tokens.typography.BodyMedium.lineHeight,
+          },
+          BodySmall: {
+            fontFamily: tokens.typography.BodySmall.fontFamily,
+            fontSize: tokens.typography.BodySmall.fontSize,
+            lineHeight: tokens.typography.BodySmall.lineHeight,
+          },
+          LabelLarge: {
+            fontFamily: tokens.typography.LabelLarge.fontFamily,
+            fontSize: tokens.typography.LabelLarge.fontSize,
+            lineHeight: tokens.typography.LabelLarge.lineHeight,
+          },
+          LabelMedium: {
+            fontFamily: tokens.typography.LabelMedium.fontFamily,
+            fontSize: tokens.typography.LabelMedium.fontSize,
+            lineHeight: tokens.typography.LabelMedium.lineHeight,
+          },
+          LabelSmall: {
+            fontFamily: tokens.typography.LabelSmall.fontFamily,
+            fontSize: tokens.typography.LabelSmall.fontSize,
+            lineHeight: tokens.typography.LabelSmall.lineHeight,
+          },
+        } satisfies Record<keyof typeof tokens.typography, TextStyle>,
         align: {
           center: {
             textAlign: 'center',
@@ -66,22 +131,3 @@ const ownStyles = StyleSheet.create(tokens => {
     },
   };
 });
-
-function getVariantStyles(tokens: AppThemes['light']) {
-  const typography = tokens.typography;
-
-  const styles = {} as Record<
-    keyof typeof typography,
-    Pick<TextStyle, 'fontFamily' | 'fontSize' | 'lineHeight'>
-  >;
-  for (const key in typography) {
-    const variant = key as keyof typeof typography;
-    styles[variant] = {
-      fontFamily: typography[variant].fontFamily,
-      fontSize: typography[variant].fontSize,
-      lineHeight: typography[variant].lineHeight,
-    };
-  }
-
-  return styles;
-}
