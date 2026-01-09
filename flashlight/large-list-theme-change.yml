@@ -1,8 +1,6 @@
 appId: com.stylingbenchmarkapp.stylesheet
 ---
 - tapOn:
-    id: toggleTheme
+    point: 540, 600
 - tapOn:
-    id: toggleTheme
-- tapOn:
-    id: toggleTheme
+    point: 540, 600
