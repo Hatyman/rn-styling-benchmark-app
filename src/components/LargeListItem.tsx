@@ -28,6 +28,7 @@ export const LargeListItem: FC<OwnProps> = function LargeListItem(props) {
         onPress={() => {
           changeTheme(theme === 'dark' ? 'light' : 'dark');
         }}
+        testID={'toggleTheme'}
       />
     </View>
   );

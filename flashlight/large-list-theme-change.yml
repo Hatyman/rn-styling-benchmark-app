@@ -1,5 +1,8 @@
 appId: com.stylingbenchmarkapp.stylesheet
 ---
-- tapOn: Toggle theme.*
-- tapOn: Toggle theme.*
-- tapOn: Toggle theme.*
+- tapOn:
+    id: toggleTheme
+- tapOn:
+    id: toggleTheme
+- tapOn:
+    id: toggleTheme
