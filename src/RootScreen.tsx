@@ -14,6 +14,11 @@ import { sharedStyles } from '@/styles/shared-styles.ts';
  * flashlight test --bundleId com.stylingbenchmarkapp --testCommand "maestro test flashlight/large-list.yml" --duration 60000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Nude" --iterationCount 3
  * flashlight test --bundleId com.stylingbenchmarkapp.stylesheet --testCommand "maestro test flashlight/startup.yml" --duration 10000 --resultsFilePath flashlight/reports/stylesheet.json --resultsTitle "Stylesheet" --iterationCount 10
  * npx react-native-bundle-visualizer --platform android --bundle-output .bundle/visualization/sc.bundle --format json --reset-cache
+ * adb shell input tap 540 600 && sleep 2.5 && adb shell input tap 540 600 && sleep 2.5 && adb shell input tap 540 600  && sleep 2.5 && adb shell input tap 540 600  && sleep 2.5 && adb shell input tap 540 600
+ * adb shell input tap 540 150 && sleep 2.5 && adb shell input tap 540 150 && sleep 2.5 && adb shell input tap 540 150  && sleep 2.5 && adb shell input tap 540 150  && sleep 2.5 && adb shell input tap 540 150
+ * adb shell input tap 800 2300 && sleep 4 && adb shell input tap 300 2300 && sleep 4 && adb shell input tap 800 2300 && sleep 4 && adb shell input tap 300 2300
+ * adb shell input swipe 300 800 300 100 50 && sleep 0.5 && adb shell input swipe 300 800 300 100 50 && sleep 0.5 && adb shell input swipe 300 800 300 100 50 && sleep 0.5 && adb shell input swipe 300 800 300 100 50
+ * flashlight test --bundleId com.stylingbenchmarkapp.debug --testCommand "adb shell input swipe 300 800 300 100 50 && adb shell sleep 0.5 && adb shell input swipe 300 800 300 100 50 && adb shell sleep 0.5 && adb shell input swipe 300 800 300 100 50 && adb shell sleep 0.5 && adb shell input swipe 300 800 300 100 50"  --duration 5000 --resultsFilePath flashlight/reports/scroll/sc.json --resultsTitle "SC" --iterationCount 3 --skipRestart
  */
 
 export const RootScreen: FC = function RootScreen() {
