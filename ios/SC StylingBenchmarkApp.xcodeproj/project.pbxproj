@@ -15,11 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 		13B07F961A680F5B00A75B9A /* SC StylingBenchmarkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SC StylingBenchmarkApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-========
-		13B07F961A680F5B00A75B9A /* Stylesheet StylingBenchmarkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stylesheet StylingBenchmarkApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = StylingBenchmarkApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = StylingBenchmarkApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = StylingBenchmarkApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -88,11 +84,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 				13B07F961A680F5B00A75B9A /* SC StylingBenchmarkApp.app */,
-========
-				13B07F961A680F5B00A75B9A /* Stylesheet StylingBenchmarkApp.app */,
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,15 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
-		13B07F861A680F5B00A75B9A /* SC StylingBenchmarkApp */ = {
+		13B07F861A680F5B00A75B9A /* StylingBenchmarkApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SC StylingBenchmarkApp" */;
-========
-		13B07F861A680F5B00A75B9A /* Stylesheet StylingBenchmarkApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Stylesheet StylingBenchmarkApp" */;
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "StylingBenchmarkApp" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -131,15 +117,9 @@
 			);
 			dependencies = (
 			);
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
-			name = "SC StylingBenchmarkApp";
+			name = StylingBenchmarkApp;
 			productName = StylingBenchmarkApp;
 			productReference = 13B07F961A680F5B00A75B9A /* SC StylingBenchmarkApp.app */;
-========
-			name = "Stylesheet StylingBenchmarkApp";
-			productName = StylingBenchmarkApp;
-			productReference = 13B07F961A680F5B00A75B9A /* Stylesheet StylingBenchmarkApp.app */;
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,11 +135,7 @@
 					};
 				};
 			};
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SC StylingBenchmarkApp" */;
-========
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Stylesheet StylingBenchmarkApp" */;
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -172,11 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
-				13B07F861A680F5B00A75B9A /* SC StylingBenchmarkApp */,
-========
-				13B07F861A680F5B00A75B9A /* Stylesheet StylingBenchmarkApp */,
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
+				13B07F861A680F5B00A75B9A /* StylingBenchmarkApp */,
 			);
 		};
 /* End PBXProject section */
@@ -219,13 +191,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-StylingBenchmarkApp/Pods-StylingBenchmarkApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-StylingBenchmarkApp/Pods-StylingBenchmarkApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -262,13 +230,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-StylingBenchmarkApp/Pods-StylingBenchmarkApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-StylingBenchmarkApp/Pods-StylingBenchmarkApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -311,11 +275,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.debug;
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 				PRODUCT_NAME = "SC StylingBenchmarkApp";
-========
-				PRODUCT_NAME = "Stylesheet StylingBenchmarkApp";
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -342,13 +302,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.sc;
 				PRODUCT_NAME = "SC StylingBenchmarkApp";
-========
-				PRODUCT_BUNDLE_IDENTIFIER = com.stylingbenchmarkapp.stylesheet;
-				PRODUCT_NAME = "Stylesheet StylingBenchmarkApp";
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -503,11 +458,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SC StylingBenchmarkApp" */ = {
-========
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Stylesheet StylingBenchmarkApp" */ = {
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "StylingBenchmarkApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -516,11 +467,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-<<<<<<<< HEAD:ios/SC StylingBenchmarkApp.xcodeproj/project.pbxproj
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SC StylingBenchmarkApp" */ = {
-========
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Stylesheet StylingBenchmarkApp" */ = {
->>>>>>>> variants/stylesheet:ios/Stylesheet StylingBenchmarkApp.xcodeproj/project.pbxproj
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
