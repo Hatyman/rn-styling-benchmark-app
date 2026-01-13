@@ -41,7 +41,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -55,20 +55,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Stylesheet StylingBenchmarkApp.app"
-            BlueprintName = "Stylesheet StylingBenchmarkApp"
-            ReferencedContainer = "container:Stylesheet StylingBenchmarkApp.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "StylingBenchmarkApp.app"
             BlueprintName = "StylingBenchmarkApp"
             ReferencedContainer = "container:StylingBenchmarkApp.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -81,11 +72,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Stylesheet StylingBenchmarkApp.app"
-            BlueprintName = "Stylesheet StylingBenchmarkApp"
+            BuildableName = "StylingBenchmarkApp.app"
+            BlueprintName = "StylingBenchmarkApp"
             ReferencedContainer = "container:Stylesheet StylingBenchmarkApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "StylingBenchmarkApp.app"
+            BlueprintName = "StylingBenchmarkApp"
+            ReferencedContainer = "container:Stylesheet StylingBenchmarkApp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
